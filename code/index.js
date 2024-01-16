@@ -100,7 +100,7 @@ searchBar.addEventListener("click", () => {
 });
 searchDelete.addEventListener("click", () => {
   if (searchWrapper.style.display === "flex") {
-    searchBar.style.display = "flex";
+    searchBar.style.display = "flex"1<  
     searchWrapper.style.display = "none";
   }
 });
@@ -172,7 +172,8 @@ const fetchForecastAsync = async () => {
 
   tempsForecast.forEach((temp, index) => {
     const temperture = filteredForecast[index].main.temp;
-    temp.innerText = `${Math.floor(temperture)} °C`;
+    temp.innerText = `${Math.floor(temperture).toFixed(1)} °C`;
+
   });
 
   windForecast.forEach((wind, index) => {
@@ -206,6 +207,7 @@ const updateHTML = (data) => {
   sunset.innerText = newSunset;
 
   tempElement.innerText = `${Math.floor(data.main.temp).toFixed(1)}`;
+  console.log(`Temperature: ${Math.floor(data.main.temp).toFixed(1)} °C`); // Log the temperature to the console
   windMain.innerText = `${Math.floor(data.wind.speed)} m/s`;
   cityName.innerText = data.name;
   descriptionEl.innerText = data.weather[0].description;
